@@ -1,6 +1,6 @@
 # YTHarness
 
-The agent harness for [YTCLI](../YTAgent): a **vendor-agnostic LangChain agent**
+The agent harness for [YTCLI](https://github.com/breksos/YTCLI): a **vendor-agnostic LangChain agent**
 (`ytagent`) that operates the `yta` YouTube CLI as its hands — searching, checking
 metadata, dumping transcripts/comments to files, grepping them, and answering
 research questions with cited videos.
