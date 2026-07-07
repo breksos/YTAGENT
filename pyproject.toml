@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ytharness"
+version = "0.1.0"
+description = "Vendor-agnostic LangChain agent that operates the yta YouTube CLI"
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+    "langchain>=1.0,<2",
+    "langgraph>=0.2",
+    "typer>=0.15",
+]
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[project.optional-dependencies]
+# Install the extra(s) for the provider(s) you want to use:
+#   uv sync --extra ollama        uv sync --extra groq --extra google      etc.
+openai = ["langchain-openai"]
+anthropic = ["langchain-anthropic"]
+google = ["langchain-google-genai"]
+groq = ["langchain-groq"]
+ollama = ["langchain-ollama"]
+all-providers = [
+    "langchain-openai",
+    "langchain-anthropic",
+    "langchain-google-genai",
+    "langchain-groq",
+    "langchain-ollama",
+]
+
+[project.scripts]
+ytagent = "ytagent.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
