@@ -45,11 +45,14 @@ def find_yta() -> str:
         return on_path
     exe = "yta.exe" if os.name == "nt" else "yta"
     # __file__ = <root>/src/ytagent/yta_tools.py -> parents[2] is the project root
-    sibling = Path(__file__).resolve().parents[2].parent / "YTAgent" / ".venv" / "Scripts" / exe
-    if sibling.exists():
-        return str(sibling)
+    scripts = "Scripts" if os.name == "nt" else "bin"
+    desktop = Path(__file__).resolve().parents[2].parent
+    for repo in ("YTCLI", "YTAgent"):
+        sibling = desktop / repo / ".venv" / scripts / exe
+        if sibling.exists():
+            return str(sibling)
     raise FileNotFoundError(
-        "yta CLI not found. Install it (pip install -e <YTAgent repo>) so `yta` is on "
+        "yta CLI not found. Install it (`uv sync` in the YTCLI repo) so `yta` is on "
         "PATH, or set YTA_BIN to the executable."
     )
 

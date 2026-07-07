@@ -47,7 +47,8 @@ Run the CLI with `uv run ytagent ...` (or activate `.venv` and call `ytagent`
 directly).
 
 `yta` must be reachable: on PATH, via the `YTA_BIN` env var, or (fallback) the
-sibling `..\YTAgent\.venv\Scripts\yta.exe` install.
+sibling CLI repo's venv (`..\YTCLI\.venv\Scripts\yta.exe`; `..\YTAgent` is also
+checked for older checkouts).
 
 ## Choosing a model (vendor-agnostic)
 
